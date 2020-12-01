@@ -1,35 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app>
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="title"> Application </v-list-item-title>
-          <v-list-item-subtitle> subtext </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-      <v-list dense nav>
-        <v-list-item v-for="link of links" :key="link.title" :to="link.url">
-          <v-list-item-icon>
-            <v-icon>{{ link.icon }}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title v-text="link.title"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item @click="onLogout" v-if="isUserLoggedIn">
-          <v-list-item-icon>
-            <v-icon>exit_to_app</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title v-text="'Logout'"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
-    <v-app-bar app>
+    <v-app-bar app dense v-if="false">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>
@@ -49,17 +20,13 @@
     </v-app-bar>
 
     <v-main class="grey lighten-3">
-    <v-container>
-      <v-sheet min-height="70vh" rounded="lg">
-        <router-view></router-view>
-      </v-sheet>
+      <router-view></router-view>
       <template v-if="error">
         <v-snackbar class="error-msg" :timeout="0" :multi-line="true" color="error" @input="closeError" :value="true">
           {{ error }}
           <v-btn flat dark @click.native="closeError">Close</v-btn>
         </v-snackbar>
       </template>
-      </v-container>
     </v-main>
   </v-app>
 </template>
