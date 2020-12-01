@@ -48,7 +48,7 @@ export default {
     });
   },
   methods: {
-    matchHeight() {
+    matchHeight() { // 1
       this.height = this.$refs.infoBox.clientHeight * 1.3;
       this.width = this.$refs.infoBox.clientWidth;
       console.log(this.$refs.infoBox.clientWidth);
